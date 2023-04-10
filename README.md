@@ -15,8 +15,10 @@ $ npm -v
 9.3.0
 
 $ pnpm create react-app faucet --template typescript
+# or same as below
 #$ npx create-react-app faucet --template typescript
 
 $ cd faucet
 $ pn install
+$ npm install # fix some dependency issues
 ```
