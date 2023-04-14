@@ -36,3 +36,16 @@ $ truffle version
 
 $ truffle init
 ```
+
+# Install Ganache for Personal Blockchain
+```shell
+# download: https://github.com/trufflesuite/ganache-ui/releases/download/v2.7.1-beta/Ganache-2.7.1-beta-win-x64-setup.exe
+# install: Ganache-2.7.1-beta-win-x64-setup.exe
+```
+
+# Migrate to Ganache
+```shell
+$ cd faucet
+$ truffle create migration migrations
+$ truffle migrate
+```
