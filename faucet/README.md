@@ -193,8 +193,11 @@ $ instance.getAllFunders()
 #  '0xa747D5507e6148d3423075e3856e14DF71eD9440',
 #  '0x36403e07A24eE8Eb7615Ab741eb66EABc8cE34b9'
 #]
-
 ```
+
+## 10 - External vs Public Functions
+If getAllFunders is declared as external, it will not call getFunderAtIndex function. 
+External function means that the function only can be called from outside the contract not from inside the contract.
 
 
 # Change History
@@ -205,3 +208,6 @@ $ instance.getAllFunders()
 5. [Truffle receive ether](#5---truffle-receive-ether)
 6. [Faucet Bytecode with web3](#6---faucet-bytecode-with-web3)
 7. [JSON-RPC API Call with Curl](#7---json-rpc-api-call-with-curl)
+8. [Add Funds to Faucet Contract](#8---add-funds-to-faucet-contract)
+9. [Get all funders](#9---get-all-funders)
+10. [External vs Public Functions](#10---external-vs-public-functions)

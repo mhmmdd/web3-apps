@@ -22,4 +22,9 @@ contract Faucet {
     function getAllFunders() public view returns (address[] memory) {
         return funders;
     }
+
+    function getFunderAtIndex(uint index) public view returns (address) {
+        address[] memory funders = getAllFunders();
+        return funders[index];
+    }
 }
