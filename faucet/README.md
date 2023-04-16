@@ -166,6 +166,37 @@ $ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params":[{"to":"0x9
 # {"id":1,"jsonrpc":"2.0","result":"0x0000000000000000000000000000000000000000000000000000000000000005"}
 ```
 
+# 8 - Add Funds to Faucet Contract
+```shell
+$ truffle console
+$ web3.eth.getBalance(Faucet.address)
+# 0
+
+$ const instance = await Faucet.deployed()
+$ instance.addFunds({from: accounts[0], value: web3.utils.toWei("10", "ether")})
+
+$ web3.eth.getBalance(Faucet.address)
+# 10000000000000000000
+
+$ instance.addFunds({from: accounts[1], value: web3.utils.toWei("10", "ether")})
+
+$ web3.eth.getBalance(Faucet.address)
+# 20000000000000000000
+```
+
+## 9 - Get all funders
+```shell
+$ truffle console
+$ const instance = await Faucet.deployed()
+$ instance.getAllFunders()
+# [
+#  '0xa747D5507e6148d3423075e3856e14DF71eD9440',
+#  '0x36403e07A24eE8Eb7615Ab741eb66EABc8cE34b9'
+#]
+
+```
+
+
 # Change History
 1. [Faucet Contract Migration to Ganache](#1---faucet-contract-migration-to-ganache)
 2. [Truffle Console](#2---truffle-console)
