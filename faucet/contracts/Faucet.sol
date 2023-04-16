@@ -10,4 +10,8 @@ contract Faucet {
     receive() external payable {
         funds += msg.value;
     }
+
+    function addTwoNumbers(int a, int b) public pure returns (int) {
+        return a + b;
+    }
 }
