@@ -199,6 +199,19 @@ $ instance.getAllFunders()
 If getAllFunders is declared as external, it will not call getFunderAtIndex function. 
 External function means that the function only can be called from outside the contract not from inside the contract.
 
+## 11 - MemoryTest Contract to see how memory works
+```shell 
+$ truffle create migration memory_test
+$ truffle migrate --reset
+$ truffle console
+$ const instance = await MemoryTest.deployed()
+$ const result = await instance.test2()
+$ result.toString()
+# decimal number for hello
+# 448378203247
+```
+
+
 
 # Change History
 1. [Faucet Contract Migration to Ganache](#1---faucet-contract-migration-to-ganache)
@@ -211,3 +224,4 @@ External function means that the function only can be called from outside the co
 8. [Add Funds to Faucet Contract](#8---add-funds-to-faucet-contract)
 9. [Get all funders](#9---get-all-funders)
 10. [External vs Public Functions](#10---external-vs-public-functions)
+11. [MemoryTest Contract to see how memory works](#11---memorytest-contract-to-see-how-memory-works)
