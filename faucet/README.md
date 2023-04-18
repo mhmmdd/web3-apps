@@ -210,8 +210,9 @@ $ result.toString()
 # decimal number for hello
 # 448378203247
 ```
-
-
+## 12 - Private vs Internal fields
+Private: Only accessible from inside the contract
+Internal: Only accessible from inside the contract and from contracts that inherit from this contract
 
 # Change History
 1. [Faucet Contract Migration to Ganache](#1---faucet-contract-migration-to-ganache)
@@ -225,3 +226,4 @@ $ result.toString()
 9. [Get all funders](#9---get-all-funders)
 10. [External vs Public Functions](#10---external-vs-public-functions)
 11. [MemoryTest Contract to see how memory works](#11---memorytest-contract-to-see-how-memory-works)
+12. [Private vs Internal fields](#12---private-vs-internal-fields)
