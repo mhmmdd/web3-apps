@@ -3,28 +3,28 @@ pragma solidity ^0.8.19;
 
 contract Faucet {
     // storage variables
-    address[] public funders;
-
+    uint public numOfFunders;
+    mapping(uint => address) public funders;
 
     // receive ether
     receive() external payable {
 
     }
 
-    function addTwoNumbers(int a, int b) public pure returns (int) {
-        return a + b;
-    }
-
     function addFunds() public payable {
-        funders.push(msg.sender);
+        funders[numOfFunders] = msg.sender;
+        numOfFunders++;
     }
 
     function getAllFunders() public view returns (address[] memory) {
-        return funders;
+        address[] memory _funders = new address[](numOfFunders);
+        for (uint i = 0; i < numOfFunders; i++) {
+            _funders[i] = funders[i];
+        }
+        return _funders;
     }
 
     function getFunderAtIndex(uint index) public view returns (address) {
-        address[] memory funders = getAllFunders();
         return funders[index];
     }
 }

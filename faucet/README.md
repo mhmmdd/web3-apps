@@ -252,6 +252,31 @@ $ result = await web3.eth.getStorageAt(instance.address, 3)
 # 0                                                              15 14
 ```
 
+## 14 - Mapping implementation in Faucet Contract
+```shell
+$ truffle console
+$ truffle migrate --reset
+
+# mapping(uint => address) public funders; -> makes duplicate entries
+$ const instance = await Faucet.deployed()
+$ instance.addFunds({from: accounts[0], value: web3.utils.toWei("10", "ether")})
+$ instance.addFunds({from: accounts[1], value: web3.utils.toWei("10", "ether")})
+$ instance.addFunds({from: accounts[0], value: web3.utils.toWei("10", "ether")})
+
+$ instance.getFunderAtIndex(0)
+# '0xa747D5507e6148d3423075e3856e14DF71eD9440'
+$ instance.getFunderAtIndex(1)
+# '0x36403e07A24eE8Eb7615Ab741eb66EABc8cE34b9'
+
+$ instance.getAllFunders()
+# [
+#  '0xa747D5507e6148d3423075e3856e14DF71eD9440',
+#  '0x36403e07A24eE8Eb7615Ab741eb66EABc8cE34b9'
+#  '0xa747D5507e6148d3423075e3856e14DF71eD9440' -> duplicated
+#]
+```
+
+
 
 # Change History
 1. [Faucet Contract Migration to Ganache](#1---faucet-contract-migration-to-ganache)
