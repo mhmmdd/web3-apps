@@ -276,6 +276,25 @@ $ instance.getAllFunders()
 #]
 ```
 
+# 15 - Mapping implementation in Faucet Contract without duplicates
+```shell
+$ truffle migrate --reset
+$ truffle console
+
+# mapping(address => bool) public funders; -> no duplicate entries
+# address[] public fundersArray; -> to get all funders
+
+$ const instance = await Faucet.deployed()
+$ instance.addFunds({from: accounts[0], value: web3.utils.toWei("10", "ether")})
+$ instance.addFunds({from: accounts[1], value: web3.utils.toWei("10", "ether")})
+$ instance.addFunds({from: accounts[0], value: web3.utils.toWei("10", "ether")})
+
+$ instance.getAllFunders()
+# [
+#  '0xa747D5507e6148d3423075e3856e14DF71eD9440',
+#  '0x36403e07A24eE8Eb7615Ab741eb66EABc8cE34b9'
+#]
+```
 
 
 # Change History
