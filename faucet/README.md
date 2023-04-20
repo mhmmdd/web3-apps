@@ -214,6 +214,45 @@ $ result.toString()
 Private: Only accessible from inside the contract
 Internal: Only accessible from inside the contract and from contracts that inherit from this contract
 
+## 13 - Storage Contract to see memory slots
+```shell
+$ truffle create migration storage
+$ truffle migrate --reset
+$ truffle console
+$ const instance = await Storage.deployed()
+
+
+#  uint8 public a = 7; // 1 byte
+#  uint16 public b = 8; // 2 bytes
+#  address public c = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4; // 20 bytes
+#  bool public d = true; // 1 byte
+#  uint64 public e = 10; // 8 bytes
+
+$ web3.eth.getStorageAt(instance.address, 0)
+# 0x000000000000000a015b38da6a701c568545dcfcb03fcb875f56beddc4000807 -> 7, 8, 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4, true, 10
+# 0x00000000000000 0a 01 5b38da6a701c568545dcfcb03fcb875f56beddc4 0008 07
+#                  10 1  5b38da6a701c568545dcfcb03fcb875f56beddc4 8    7
+
+
+$ let result = await web3.eth.getStorageAt(instance.address, 0)
+$ web3.utils.hexToNumberString(result)
+
+$ result = await web3.eth.getStorageAt(instance.address, 1)
+$ web3.utils.hexToNumberString(result)
+# '12'
+
+$ result = await web3.eth.getStorageAt(instance.address, 2)
+$ web3.utils.hexToNumberString(result)
+# '13'
+
+#  uint8 public h = 14; // 1 byte -> slot 3
+#  uint8 public i = 15; // 1 byte -> slot 3
+$ result = await web3.eth.getStorageAt(instance.address, 3)
+# 0x000000000000000000000000000000000000000000000000000000000000 0f 0e
+# 0                                                              15 14
+```
+
+
 # Change History
 1. [Faucet Contract Migration to Ganache](#1---faucet-contract-migration-to-ganache)
 2. [Truffle Console](#2---truffle-console)
