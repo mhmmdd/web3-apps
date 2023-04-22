@@ -296,8 +296,45 @@ $ instance.getAllFunders()
 #]
 ```
 
+# 16 - Mapping in Storage Contract
+```shell
+$ truffle migrate --reset
+$ truffle console
 
-# Change History
+# keccak256(key + slot)
+#  mapping(uint => uint) public j; // 32 bytes -> slot 4
+#  mapping(address => uint) public k; // 32 bytes -> slot 5
+
+$ const instance = await Storage.deployed()
+$ let result = await web3.eth.getStorageAt(instance.address, "0x91da3fd0782e51c6b3986e9e672fd566868e71f3dbc2d6c2cd6fbb3e361af2a7")
+# '0x0000000000000000000000000000000000000000000000000000000000000004' -> 4
+
+$ result = await web3.eth.getStorageAt(instance.address, "0x2e174c10e159ea99b867ce3205125c24a42d128804e4070ed6fcc8cc98166aa0")
+# '0x000000000000000000000000000000000000000000000000000000000000000a' -> 10
+
+$ result = await web3.eth.getStorageAt(instance.address, "0xa8c8bc7c03ef03b3fe2f845d765c43dc1973518e7febf315273fadcae0a2af1a")
+# '0x0000000000000000000000000000000000000000000000000000000000000064' -> 100
+
+
+# Array
+# This returns array size
+$ result = await await web3.eth.getStorageAt(instance.address, 6)
+# '0x0000000000000000000000000000000000000000000000000000000000000003' -> 3
+
+# First element of array: keccak256 hex -> (decimal + 0) -> hex
+$ result = await await web3.eth.getStorageAt(instance.address, "0xf652222313e28459528d920b65115c16c04f3efc82aaedc97be59f3f377c0d3f")
+# '0x0000000000000000000000000000000000000000000000000000000000000001' -> 1
+
+# Second element of array: keccak256 hex -> (decimal + 1) -> hex
+$ result = await await web3.eth.getStorageAt(instance.address, "0xf652222313e28459528d920b65115c16c04f3efc82aaedc97be59f3f377c0d40")
+# '0x000000000000000000000000000000000000000000000000000000000000000a' -> 10
+
+# Third element of array: keccak256 hex -> (decimal + 2) -> hex
+$ result = await await web3.eth.getStorageAt(instance.address, "0xf652222313e28459528d920b65115c16c04f3efc82aaedc97be59f3f377c0d41")
+# '0x0000000000000000000000000000000000000000000000000000000000000064' -> 100
+```
+
+# Change History 
 1. [Faucet Contract Migration to Ganache](#1---faucet-contract-migration-to-ganache)
 2. [Truffle Console](#2---truffle-console)
 3. [Faucet Contract Interaction with web3](#3---faucet-contract-interaction-with-web3)
