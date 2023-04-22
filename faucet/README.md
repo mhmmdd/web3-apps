@@ -1,10 +1,10 @@
-# 1 - Faucet Contract Migration to Ganache
+## 1 - Faucet Contract Migration to Ganache
 ```shell
 $ cd faucet
 $ truffle create migration faucet_migration
 ```
 
-# 2 - Truffle Console
+## 2 - Truffle Console
 ```shell
 $ truffle console
 
@@ -42,7 +42,7 @@ truffle(development)> const instance = new web3.eth.Contract(Faucet.abi, Faucet.
 truffle(development)> instance
 ```
 
-# 4 - EVM
+## 4 - EVM
 Ethereum Clients (Geth, Parity, etc.) are EVM (Ethereum Virtual Machine) implementations. Geth is golang, parity is rust.
 Client has access State and Transaction Pool(Mempool). State is a key-value store. Transaction Pool is a list of transactions that are waiting to be included in a block.
 State is a form of tree structure. Merkle Patricia Trie is a tree structure that is used to store the state.
@@ -166,7 +166,7 @@ $ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params":[{"to":"0x9
 # {"id":1,"jsonrpc":"2.0","result":"0x0000000000000000000000000000000000000000000000000000000000000005"}
 ```
 
-# 8 - Add Funds to Faucet Contract
+## 8 - Add Funds to Faucet Contract
 ```shell
 $ truffle console
 $ web3.eth.getBalance(Faucet.address)
@@ -276,7 +276,7 @@ $ instance.getAllFunders()
 #]
 ```
 
-# 15 - Mapping implementation in Faucet Contract without duplicates
+## 15 - Mapping implementation in Faucet Contract without duplicates
 ```shell
 $ truffle migrate --reset
 $ truffle console
@@ -296,7 +296,7 @@ $ instance.getAllFunders()
 #]
 ```
 
-# 16 - Mapping in Storage Contract
+## 16 - Mapping in Storage Contract
 ```shell
 $ truffle migrate --reset
 $ truffle console
@@ -334,7 +334,7 @@ $ result = await await web3.eth.getStorageAt(instance.address, "0xf652222313e284
 # '0x0000000000000000000000000000000000000000000000000000000000000064' -> 100
 ```
 
-# 17 - Withdraw Funds from Faucet Contract
+## 17 - Withdraw Funds from Faucet Contract
 ```shell
 $ truffle migrate --reset
 $ truffle console
@@ -356,6 +356,11 @@ $ instance.testOnlyOwner({from: accounts[1]})
 #error: You are not the owner
 ```
 
+## 18 - Abstract and Interface on Faucet Contract
+Difference between Abstract and Interface
+   - Abstract: Abstract contract can have function **implementation**
+   - Interface: Interface contract can not have function implementation, only function **declaration**
+
 # Change History 
 1. [Faucet Contract Migration to Ganache](#1---faucet-contract-migration-to-ganache)
 2. [Truffle Console](#2---truffle-console)
@@ -369,3 +374,9 @@ $ instance.testOnlyOwner({from: accounts[1]})
 10. [External vs Public Functions](#10---external-vs-public-functions)
 11. [MemoryTest Contract to see how memory works](#11---memorytest-contract-to-see-how-memory-works)
 12. [Private vs Internal fields](#12---private-vs-internal-fields)
+13. [Storage Contract](#13---storage-contract)
+14. [Storage Contract with web3](#14---storage-contract-with-web3)
+15. [Faucet Contract with web3](#15---faucet-contract-with-web3)
+16. [Mapping in Storage Contract](#16---mapping-in-storage-contract)
+17. [Withdraw Funds from Faucet Contract](#17---withdraw-funds-from-faucet-contract)
+18. [Abstract and Interface on Faucet Contract](#18---abstract-and-interface-on-faucet-contract)
