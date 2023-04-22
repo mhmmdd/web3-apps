@@ -334,6 +334,28 @@ $ result = await await web3.eth.getStorageAt(instance.address, "0xf652222313e284
 # '0x0000000000000000000000000000000000000000000000000000000000000064' -> 100
 ```
 
+# 17 - Withdraw Funds from Faucet Contract
+```shell
+$ truffle migrate --reset
+$ truffle console
+$ const instance = await Faucet.deployed()
+
+# Test withdraw function
+$ instance.addFunds({value: 1000000000000000000, from: accounts[0]})
+$ instance.addFunds({value: 1000000000000000000, from: accounts[0]})
+$ instance.withdraw("1000000000000000000", {from: accounts[0]})
+
+$ instance.withdraw("2000000000000000000", {from: accounts[0]})
+#error: You can only withdraw less than 1 ether
+
+# Test onlyOwner modifier
+$ instance.testOnlyOwner()
+$ instance.testOnlyOwner({from: accounts[0]})
+
+$ instance.testOnlyOwner({from: accounts[1]})
+#error: You are not the owner
+```
+
 # Change History 
 1. [Faucet Contract Migration to Ganache](#1---faucet-contract-migration-to-ganache)
 2. [Truffle Console](#2---truffle-console)
