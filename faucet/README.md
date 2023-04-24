@@ -395,6 +395,25 @@ useEffect(() => {
 }, [web3Api?.eth]);
 ```
 
+## 23 - Use provider library to connect to Metamask
+```shell
+$ npm install @metamask/detect-provider
+```
+```typescript
+useEffect(() => {
+   const loadProvider = async () => {
+      const provider = await detectEthereumProvider();
+      if (provider) {
+         await (provider as any).request({method: 'eth_requestAccounts'});
+         setWeb3Api(new Web3((provider as any)));
+      } else {
+         console.log('Please install MetaMask!');
+      }
+   }
+   loadProvider();
+}, []);
+```
+
 # Change History 
 1. [Faucet Contract Migration to Ganache](#1---faucet-contract-migration-to-ganache)
 2. [Truffle Console](#2---truffle-console)
@@ -418,3 +437,4 @@ useEffect(() => {
 20. [Metamask configuration](#20---metamask-configuration)
 21. [Web3 Provider and Metamask integration](#21---web3-provider-and-metamask-integration)
 22. [Get account from Metamask](#22---get-account-from-metamask)
+23. [Use provider library to connect to Metamask](#23---use-provider-library-to-connect-to-metamask)
