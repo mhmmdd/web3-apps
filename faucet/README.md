@@ -424,6 +424,21 @@ useEffect(() => {
 }
 ```
 
+## 25 - Load Faucet Contract in Frontend
+truffle-config.js
+```javascript
+// make contracts accessible in frontend
+contracts_build_directory: "./public/contracts"
+```
+````shell
+$ npm install --save-dev react-app-rewired crypto-browserify stream-browserify assert stream-http https-browserify os-browserify url buffer process path-browserify --force
+
+$ npm install truffle typescript ts-node typechain @typechain/truffle-v5 --save-dev
+$ npm install @truffle/contract
+````
+[load-contract.ts](src%2Futils%2Fload-contract.ts), [config-overrides.js](config-overrides.js)
+
+
 # Change History 
 1. [Faucet Contract Migration to Ganache](#1---faucet-contract-migration-to-ganache)
 2. [Truffle Console](#2---truffle-console)
