@@ -16,6 +16,13 @@ function App() {
   const [balance, setBalance] = React.useState<string>();
   const [shouldReload, setShouldReload] = React.useState<boolean>(false);
 
+  // listen to account changes
+  const setAccountListener = (provider: any) => {
+    provider.on('accountsChanged', (accounts: string[]) => {
+      setAccount(accounts[0]);
+    });
+  }
+
   useEffect(() => {
     const loadProvider = async () => {
       const provider = await detectEthereumProvider();
@@ -23,6 +30,8 @@ function App() {
       const contract = await loadContract("Faucet", provider);
 
       if (provider) {
+        setAccountListener(provider);
+
         await (provider as any).request({method: 'eth_requestAccounts'});
         setWeb3Api({web3: new Web3(provider as any), provider, contract});
       } else {
@@ -62,6 +71,16 @@ function App() {
     setShouldReload(shouldReload => !shouldReload);
   }, [web3Api.contract, account]);
 
+  // withdraw funds from contract
+  const withdrawFunds = useCallback(async () => {
+    const {contract, web3} = web3Api;
+    const amount = web3!.utils.toWei('0.1', 'ether');
+    await contract!.withdraw(amount, {from: account});
+
+    // reload balance
+    setShouldReload(shouldReload => !shouldReload);
+  }, [web3Api.contract, account]);
+
   return (
     <div className="App">
       <div className="faucet-wrapper">
@@ -85,7 +104,11 @@ function App() {
             className="button is-link mr-2 is-small">
             Donate 1 ETH
           </button>
-          <button className="button is-primary is-small">Withdraw</button>
+          <button
+            onClick={withdrawFunds}
+            className="button is-primary is-small">
+            Withdraw
+          </button>
         </div>
       </div>
     </div>

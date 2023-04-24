@@ -487,6 +487,24 @@ const addFunds = useCallback(async () => {
 }, [web3Api.contract, account]);
 ```
 
+## 29 - Withdraw from Faucet Contract
+
+## 30 - Account Listener
+```tsx
+// listen to account changes
+const setAccountListener = (provider: any) => {
+   provider.on('accountsChanged', (accounts: string[]) => {
+      setAccount(accounts[0]);
+   });
+}
+
+// account listener
+if (provider) {
+  setAccountListener(provider);
+}
+```
+
+
 # Change History 
 1. [Faucet Contract Migration to Ganache](#1---faucet-contract-migration-to-ganache)
 2. [Truffle Console](#2---truffle-console)
