@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@truffle/contract": "^4.6.20",
+    "@typechain/ethers-v5": "^10.2.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.23",
     "@types/react": "^18.0.33",
@@ -23,7 +24,9 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "generate-types": "npx typechain --target=truffle-v5 'public/contracts/*.json'",
+    "postinstall": "npx truffle compile && npm run generate-types"
   },
   "eslintConfig": {
     "extends": [

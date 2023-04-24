@@ -452,6 +452,23 @@ useEffect(() => {
 }, [web3Api.contract]);
 ```
 
+## 27 - Add Funds to Faucet Contract
+```tsx
+const addFunds = async () => {
+   const {contract} = web3Api;
+   const wei = web3Api.web3!.utils.toWei('1', 'ether');
+   await contract!.addFunds({from: account, value: wei});
+}
+```
+For type safety, we use [typechain](https://github.com/dethcrypto/TypeChain).
+package.json
+```json
+"scripts": {
+   "generate-types": "npx typechain --target=truffle-v5 'public/contracts/*.json'",
+   "postinstall": "npx truffle compile && npm run generate-types"
+}
+```
+
 # Change History 
 1. [Faucet Contract Migration to Ganache](#1---faucet-contract-migration-to-ganache)
 2. [Truffle Console](#2---truffle-console)
@@ -478,3 +495,5 @@ useEffect(() => {
 23. [Use provider library to connect to Metamask](#23---use-provider-library-to-connect-to-metamask)
 24. [Connect Wallet Button](#24---connect-wallet-button)
 25. [Load Faucet Contract in Frontend](#25---load-faucet-contract-in-frontend)
+26. [Get Balance from Faucet Contract](#26---get-balance-from-faucet-contract)
+27. [Add Funds to Faucet Contract](#27---add-funds-to-faucet-contract)

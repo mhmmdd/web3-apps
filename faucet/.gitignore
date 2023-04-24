@@ -21,3 +21,15 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+# truffle
+build
+public/contracts
+
+# typechain
+types
+
+# buidler
+artifacts
+cache

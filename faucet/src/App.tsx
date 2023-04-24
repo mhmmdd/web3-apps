@@ -3,10 +3,11 @@ import './App.css';
 import Web3 from 'web3';
 import detectEthereumProvider from "@metamask/detect-provider";
 import {loadContract} from "./utils/load-contract";
+import {FaucetInstance} from "../types/truffle-contracts";
 
 function App() {
   const [web3Api, setWeb3Api]
-    = React.useState<{ web3: Web3 | null, provider: any, contract: any }>({
+    = React.useState<{ web3: Web3 | null, provider: any, contract: FaucetInstance | null }>({
     web3: null,
     provider: null,
     contract: null
@@ -43,11 +44,19 @@ function App() {
   useEffect(() => {
     const loadBalance = async () => {
       const {contract, web3} = web3Api;
-      const balance: string = await web3!.eth.getBalance(contract.address);
+      // @ts-ignore
+      const balance: string = await web3!.eth.getBalance(contract!.address);
       setBalance(web3!.utils.fromWei(balance, 'ether'));
     }
     web3Api.web3 && web3Api.contract && loadBalance();
   }, [web3Api.contract]);
+
+  // add funds to contract
+  const addFunds = async () => {
+    const {contract} = web3Api;
+    const wei = web3Api.web3!.utils.toWei('1', 'ether');
+    await contract!.addFunds({from: account, value: wei});
+  }
 
   return (
     <div className="App">
@@ -67,7 +76,11 @@ function App() {
           <div className="balance-view is-size-2 my-5">
             Current Balance: <strong>{balance}</strong> ETH
           </div>
-          <button className="button is-link mr-2 is-small">Donate</button>
+          <button
+            onClick={addFunds}
+            className="button is-link mr-2 is-small">
+            Donate 1 ETH
+          </button>
           <button className="button is-primary is-small">Withdraw</button>
         </div>
       </div>
