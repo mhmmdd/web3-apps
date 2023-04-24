@@ -14,6 +14,7 @@ function App() {
   });
   const [account, setAccount] = React.useState<string>();
   const [balance, setBalance] = React.useState<string>();
+  const [shouldReload, setShouldReload] = React.useState<boolean>(false);
 
   useEffect(() => {
     const loadProvider = async () => {
@@ -49,13 +50,16 @@ function App() {
       setBalance(web3!.utils.fromWei(balance, 'ether'));
     }
     web3Api.web3 && web3Api.contract && loadBalance();
-  }, [web3Api.contract]);
+  }, [web3Api.contract, shouldReload]);
 
   // add funds to contract
   const addFunds = useCallback(async () => {
     const {contract, web3} = web3Api;
     const amount = web3!.utils.toWei('1', 'ether');
     await contract!.addFunds({from: account, value: amount});
+
+    // reload balance
+    setShouldReload(shouldReload => !shouldReload);
   }, [web3Api.contract, account]);
 
   return (

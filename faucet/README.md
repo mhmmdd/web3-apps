@@ -470,6 +470,23 @@ package.json
 }
 ```
 
+## 28 - Reload Effect after funds added
+```tsx
+const [shouldReload, setShouldReload] = React.useState<boolean>(false);
+
+// get balance from contract
+useEffect(() => {
+...
+}, [web3Api.contract, shouldReload]);
+
+// add funds to contract
+const addFunds = useCallback(async () => {
+  ...
+   // reload balance
+   setShouldReload(shouldReload => !shouldReload);
+}, [web3Api.contract, account]);
+```
+
 # Change History 
 1. [Faucet Contract Migration to Ganache](#1---faucet-contract-migration-to-ganache)
 2. [Truffle Console](#2---truffle-console)
@@ -498,3 +515,4 @@ package.json
 25. [Load Faucet Contract in Frontend](#25---load-faucet-contract-in-frontend)
 26. [Get Balance from Faucet Contract](#26---get-balance-from-faucet-contract)
 27. [Add Funds to Faucet Contract](#27---add-funds-to-faucet-contract)
+28. [Reload Effect after funds added](#28---reload-effect-after-funds-added)
