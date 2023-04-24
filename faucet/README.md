@@ -439,6 +439,19 @@ $ npm install @truffle/contract
 [load-contract.ts](src%2Futils%2Fload-contract.ts), [config-overrides.js](config-overrides.js)
 
 
+## 26 - Get Balance from Faucet Contract
+```tsx
+// get balance from contract
+useEffect(() => {
+   const loadBalance = async () => {
+      const {contract, web3} = web3Api;
+      const balance: string = await web3!.eth.getBalance(contract.address);
+      setBalance(web3!.utils.fromWei(balance, 'ether'));
+   }
+   web3Api.web3 && web3Api.contract && loadBalance();
+}, [web3Api.contract]);
+```
+
 # Change History 
 1. [Faucet Contract Migration to Ganache](#1---faucet-contract-migration-to-ganache)
 2. [Truffle Console](#2---truffle-console)
@@ -464,3 +477,4 @@ $ npm install @truffle/contract
 22. [Get account from Metamask](#22---get-account-from-metamask)
 23. [Use provider library to connect to Metamask](#23---use-provider-library-to-connect-to-metamask)
 24. [Connect Wallet Button](#24---connect-wallet-button)
+25. [Load Faucet Contract in Frontend](#25---load-faucet-contract-in-frontend)
