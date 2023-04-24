@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import './App.css';
 import Web3 from 'web3';
 import detectEthereumProvider from "@metamask/detect-provider";
@@ -52,11 +52,11 @@ function App() {
   }, [web3Api.contract]);
 
   // add funds to contract
-  const addFunds = async () => {
-    const {contract} = web3Api;
-    const wei = web3Api.web3!.utils.toWei('1', 'ether');
-    await contract!.addFunds({from: account, value: wei});
-  }
+  const addFunds = useCallback(async () => {
+    const {contract, web3} = web3Api;
+    const amount = web3!.utils.toWei('1', 'ether');
+    await contract!.addFunds({from: account, value: amount});
+  }, [web3Api.contract, account]);
 
   return (
     <div className="App">

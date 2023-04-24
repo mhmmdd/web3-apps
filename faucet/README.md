@@ -454,11 +454,12 @@ useEffect(() => {
 
 ## 27 - Add Funds to Faucet Contract
 ```tsx
-const addFunds = async () => {
-   const {contract} = web3Api;
-   const wei = web3Api.web3!.utils.toWei('1', 'ether');
-   await contract!.addFunds({from: account, value: wei});
-}
+// add funds to contract
+const addFunds = useCallback(async () => {
+   const {contract, web3} = web3Api;
+   const amount = web3!.utils.toWei('1', 'ether');
+   await contract!.addFunds({from: account, value: amount});
+}, [web3Api.contract, account]);
 ```
 For type safety, we use [typechain](https://github.com/dethcrypto/TypeChain).
 package.json
