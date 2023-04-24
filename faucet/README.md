@@ -361,6 +361,28 @@ Difference between Abstract and Interface
    - Abstract: Abstract contract can have function **implementation**
    - Interface: Interface contract can not have function implementation, only function **declaration**
 
+## 19 - How Metamask works
+1. 12 word mnemonic phrase + password -> private key -> public key -> address
+2. Every transaction needs to be signed by private key
+3. Metamask will sign the transaction with private key and send it to the network
+4. The network will verify the signature with public key and address
+
+## 20 - Metamask configuration
+1. Add custom RPC
+   - Network Name: Ganache
+   - New RPC URL: http://127.0.0.1:7545
+   - Chain ID: 1337
+   - Symbol: ETH
+2. Import account from Ganache to Metamask
+   - Copy private key from Ganache (Click on key icon next to account)
+   - Import account in Metamask (Click on account icon next to network name)
+
+## 21 - Web3 Provider and Metamask integration
+```shell
+$ npm install bulma
+$ npm install web3
+```
+
 # Change History 
 1. [Faucet Contract Migration to Ganache](#1---faucet-contract-migration-to-ganache)
 2. [Truffle Console](#2---truffle-console)
@@ -380,3 +402,6 @@ Difference between Abstract and Interface
 16. [Mapping in Storage Contract](#16---mapping-in-storage-contract)
 17. [Withdraw Funds from Faucet Contract](#17---withdraw-funds-from-faucet-contract)
 18. [Abstract and Interface on Faucet Contract](#18---abstract-and-interface-on-faucet-contract)
+19. [How Metamask works](#19---how-metamask-works)
+20. [Metamask configuration](#20---metamask-configuration)
+21. [Web3 Provider and Metamask integration](#21---web3-provider-and-metamask-integration)
