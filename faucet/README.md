@@ -414,6 +414,16 @@ useEffect(() => {
 }, []);
 ```
 
+## 24 - Connect Wallet Button
+```tsx
+{account ? <div>{account}</div> :
+<button className="button is-small"
+        onClick={() => web3Api.provider.request({method: 'eth_requestAccounts'})}>
+  Connect Wallet
+</button>
+}
+```
+
 # Change History 
 1. [Faucet Contract Migration to Ganache](#1---faucet-contract-migration-to-ganache)
 2. [Truffle Console](#2---truffle-console)
@@ -438,3 +448,4 @@ useEffect(() => {
 21. [Web3 Provider and Metamask integration](#21---web3-provider-and-metamask-integration)
 22. [Get account from Metamask](#22---get-account-from-metamask)
 23. [Use provider library to connect to Metamask](#23---use-provider-library-to-connect-to-metamask)
+24. [Connect Wallet Button](#24---connect-wallet-button)
