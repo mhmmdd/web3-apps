@@ -383,6 +383,18 @@ $ npm install bulma
 $ npm install web3
 ```
 
+## 22 - Get account from Metamask
+```typescript
+// get account from metamask
+useEffect(() => {
+   const getAccounts = async () => {
+      const accounts = await web3Api?.eth.getAccounts();
+      setAccount(accounts && accounts[0]);
+   }
+   web3Api?.eth && getAccounts();
+}, [web3Api?.eth]);
+```
+
 # Change History 
 1. [Faucet Contract Migration to Ganache](#1---faucet-contract-migration-to-ganache)
 2. [Truffle Console](#2---truffle-console)
@@ -405,3 +417,4 @@ $ npm install web3
 19. [How Metamask works](#19---how-metamask-works)
 20. [Metamask configuration](#20---metamask-configuration)
 21. [Web3 Provider and Metamask integration](#21---web3-provider-and-metamask-integration)
+22. [Get account from Metamask](#22---get-account-from-metamask)
