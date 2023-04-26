@@ -538,3 +538,4 @@ if (provider) {
 28. [Reload Effect after funds added](#28---reload-effect-after-funds-added)
 29. [Withdraw from Faucet Contract](#29---withdraw-from-faucet-contract)
 30. [Account Listener](#30---account-listener)
+31. [UI Improvement](#31---ui-improvement)

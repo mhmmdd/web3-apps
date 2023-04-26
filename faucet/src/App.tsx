@@ -33,12 +33,12 @@ function App() {
     const loadProvider = async () => {
       const provider = await detectEthereumProvider();
 
-      const contract = await loadContract("Faucet", provider);
-
       if (provider) {
-        setAccountListener(provider);
 
+        setAccountListener(provider);
         await (provider as any).request({method: 'eth_requestAccounts'});
+
+        const contract = await loadContract("Faucet", provider);
         setWeb3Api({web3: new Web3(provider as any), provider, contract, isProviderConnected: true});
       } else {
         // received web3 instance and set it to the state
