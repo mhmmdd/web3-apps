@@ -7,10 +7,16 @@ import {FaucetInstance} from "../types/truffle-contracts";
 
 function App() {
   const [web3Api, setWeb3Api]
-    = React.useState<{ web3: Web3 | null, provider: any, contract: FaucetInstance | null }>({
+    = React.useState<{
+    web3: Web3 | null,
+    provider: any,
+    contract: FaucetInstance | null,
+    isProviderConnected: boolean
+  }>({
     web3: null,
     provider: null,
-    contract: null
+    contract: null,
+    isProviderConnected: false
   });
   const [account, setAccount] = React.useState<string>();
   const [balance, setBalance] = React.useState<string>();
@@ -33,8 +39,12 @@ function App() {
         setAccountListener(provider);
 
         await (provider as any).request({method: 'eth_requestAccounts'});
-        setWeb3Api({web3: new Web3(provider as any), provider, contract});
+        setWeb3Api({web3: new Web3(provider as any), provider, contract, isProviderConnected: true});
       } else {
+        // received web3 instance and set it to the state
+        setWeb3Api((api) =>
+          ({...api, isProviderConnected: true}));
+
         console.log('Please install MetaMask!');
       }
     }
@@ -59,7 +69,7 @@ function App() {
       setBalance(web3!.utils.fromWei(balance, 'ether'));
     }
     web3Api.web3 && web3Api.contract && loadBalance();
-  }, [web3Api.contract, shouldReload]);
+  }, [web3Api, shouldReload]);
 
   // add funds to contract
   const addFunds = useCallback(async () => {
@@ -69,7 +79,7 @@ function App() {
 
     // reload balance
     setShouldReload(shouldReload => !shouldReload);
-  }, [web3Api.contract, account]);
+  }, [web3Api, account]);
 
   // withdraw funds from contract
   const withdrawFunds = useCallback(async () => {
@@ -79,32 +89,47 @@ function App() {
 
     // reload balance
     setShouldReload(shouldReload => !shouldReload);
-  }, [web3Api.contract, account]);
+  }, [web3Api, account]);
 
   return (
     <div className="App">
       <div className="faucet-wrapper">
         <div className="faucet">
-          <div className="is-flex is-align-items-center">
+          {
+            web3Api.isProviderConnected ?
+              <div className="is-flex is-align-items-center">
             <span>
               <strong>Account: </strong>
             </span>
-            {account ? <div>{account}</div> :
-              <button className="button is-small"
-                      onClick={() => web3Api.provider.request({method: 'eth_requestAccounts'})}>
-                Connect Wallet
-              </button>
-            }
-          </div>
+                {account ?
+                  <div>{account}</div> :
+                  web3Api.provider ?
+                    <button className="button is-small"
+                            onClick={() => web3Api.provider.request({method: 'eth_requestAccounts'})}>
+                      Connect Wallet
+                    </button>
+                    :
+                    <>
+                      <div className="notification is-warning is-size-6 is-rounded">
+                        Please install MetaMask! {` `}
+                        <a target="_blank" rel="noreferrer" href={"https://metamask.io/download.html"}>Download</a>
+                      </div>
+                    </>
+                }
+              </div>
+              : <span>Looking for Web3...</span>
+          }
           <div className="balance-view is-size-2 my-5">
             Current Balance: <strong>{balance}</strong> ETH
           </div>
           <button
+            disabled={!account}
             onClick={addFunds}
             className="button is-link mr-2 is-small">
             Donate 1 ETH
           </button>
           <button
+            disabled={!account}
             onClick={withdrawFunds}
             className="button is-primary is-small">
             Withdraw

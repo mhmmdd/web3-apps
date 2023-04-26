@@ -504,6 +504,8 @@ if (provider) {
 }
 ```
 
+## 31 - UI Improvement
+
 
 # Change History 
 1. [Faucet Contract Migration to Ganache](#1---faucet-contract-migration-to-ganache)
@@ -534,3 +536,5 @@ if (provider) {
 26. [Get Balance from Faucet Contract](#26---get-balance-from-faucet-contract)
 27. [Add Funds to Faucet Contract](#27---add-funds-to-faucet-contract)
 28. [Reload Effect after funds added](#28---reload-effect-after-funds-added)
+29. [Withdraw from Faucet Contract](#29---withdraw-from-faucet-contract)
+30. [Account Listener](#30---account-listener)
