@@ -22,10 +22,17 @@ function App() {
   const [balance, setBalance] = React.useState<string>();
   const [shouldReload, setShouldReload] = React.useState<boolean>(false);
 
-  // listen to account changes
+  const canConnectToContract = account && web3Api.contract;
+
   const setAccountListener = (provider: any) => {
+    // listen to account changes
     provider.on('accountsChanged', (accounts: string[]) => {
       setAccount(accounts[0]);
+    });
+
+    // listen to network changes
+    provider.on('chainChanged', (chainId: string) => {
+      window.location.reload();
     });
   }
 
@@ -120,19 +127,25 @@ function App() {
               : <span>Looking for Web3...</span>
           }
           <div className="balance-view is-size-2 my-5">
-            Current Balance: <strong>{balance}</strong> ETH
+            Current Balance: {balance ? <strong>{balance}</strong> : <span>0</span>} ETH
           </div>
+
+          {!canConnectToContract &&
+            <i>
+              Connect to Ganache<br/>
+            </i>
+          }
           <button
-            disabled={!account}
+            disabled={!canConnectToContract}
             onClick={addFunds}
             className="button is-link mr-2 is-small">
             Donate 1 ETH
           </button>
           <button
-            disabled={!account}
+            disabled={!canConnectToContract}
             onClick={withdrawFunds}
             className="button is-primary is-small">
-            Withdraw
+            Withdraw 0.1 ETH
           </button>
         </div>
       </div>

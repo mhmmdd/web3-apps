@@ -506,6 +506,21 @@ if (provider) {
 
 ## 31 - UI Improvement
 
+## 32 - Listen to Network Changes
+```tsx
+const setAccountListener = (provider: any) => {
+   // listen to network changes
+   provider.on('chainChanged', (chainId: string) => {
+      window.location.reload();
+   });
+}
+
+// account listener
+if (provider) {
+   setAccountListener(provider);
+}
+```
+
 
 # Change History 
 1. [Faucet Contract Migration to Ganache](#1---faucet-contract-migration-to-ganache)
@@ -539,3 +554,4 @@ if (provider) {
 29. [Withdraw from Faucet Contract](#29---withdraw-from-faucet-contract)
 30. [Account Listener](#30---account-listener)
 31. [UI Improvement](#31---ui-improvement)
+32. [Listen to Network Changes](#32---listen-to-network-changes)

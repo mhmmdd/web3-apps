@@ -10,5 +10,11 @@ export const loadContract = async (contractName: string, provider: any) => {
   const contractInstance = contract(json);
   contractInstance.setProvider(provider);
 
-  return await contractInstance.deployed();
+  try {
+    return await contractInstance.deployed();
+  } catch (e){
+    throw new Error(
+      `Contract ${contractName} not deployed to detected network. Please check that your provider settings are correct.`
+    );
+  }
 };
