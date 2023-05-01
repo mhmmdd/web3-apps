@@ -49,3 +49,41 @@ $ cd faucet
 $ truffle create migration migrations
 $ truffle migrate
 ```
+
+# Create MarketPlace Next.js App
+```shell
+$ node -v
+v18.15.0
+
+$ npm -v
+9.3.0
+
+$ pnpm -v
+8.3.1
+
+$ pnpm create next-app marketplace --typescript
+# or same as below
+#$ npx create-next-app marketplace --typescript
+
+#√ Would you like to use ESLint with this project? ... No / Yes -> Yes
+#√ Would you like to use Tailwind CSS with this project? ... No / Yes -> Yes
+#√ Would you like to use `src/` directory with this project? ... No / Yes -> Yes
+#√ Would you like to use experimental `app/` directory with this project? ... No / Yes -> No
+#√ What import alias would you like configured? ... @/*
+
+$ cd marketplace
+$ pnpm run dev
+```
+
+## Upgrade Pnpm
+1. run `pnpm setup`
+2. add `PNPM_HOME=C:\Users\[your system username]\AppData\Local\pnpm` to global `system variables`, not user variables!!!
+3. add `%PNPM_HOME%` to `Path` of `system variables`
+4. restart your terminal
+```shell
+$ pnpm add -g pnpm
+$ pnpm -v
+8.3.1
+```
+
+
