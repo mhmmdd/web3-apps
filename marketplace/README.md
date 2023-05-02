@@ -23,3 +23,5 @@ export default function Home() {
   )
 }
 ```
+
+## 2 - Create new components and pages
