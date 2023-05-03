@@ -124,9 +124,44 @@ const nextConfig = {
 }
 ```
 
+## 6 - Slugify course title to create course detail page url
+src/components/course/courseList.tsx
+```tsx
+import Link from "next/link";
+
+export default function CourseList({courses}: { courses: Course[] }) {
+  return (
+    <Link href={`/courses/${course.slug}`}>
+      <div className="block mt-1 text-lg leading-tight font-medium text-black hover:underline">
+        {course.title}
+      </div>
+    </Link>
+  )
+}
+```
+
+src/pages/courses/[slug].tsx
+```tsx
+export default function Course() {
+  return (
+    <>
+      <div className="py-4">
+        <CourseHero/>
+      </div>
+      <Keypoints/>
+      <Curriculum/>
+      <Modal/>
+    </>
+  )
+}
+```
+If you go to `http://localhost:3000/courses/learn-react`, you will see the course detail page.
+
+
 # Change History 
 1. [Path Alias](#1---path-alias)
 2. [Create new components and pages](#2---create-new-components-and-pages)
 3. [Create Base Layout](#3---create-base-layout)
 4. [Fetch courses data from json file](#4---fetch-courses-data-from-json-file)
 5. [Next.js Image Optimization](#5---nextjs-image-optimization)
+6. [Slugify course title to create course detail page url](#6---slugify-course-title-to-create-course-detail-page-url)
