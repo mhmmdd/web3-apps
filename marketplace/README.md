@@ -161,6 +161,8 @@ If you go to `http://localhost:3000/courses/learn-react`, you will see the cours
 
 ## 8 - Key Points and Curriculum components functionality
 
+## 9 - Connect button improvements
+
 
 # Change History 
 1. [Path Alias](#1---path-alias)
@@ -171,3 +173,4 @@ If you go to `http://localhost:3000/courses/learn-react`, you will see the cours
 6. [Slugify course title to create course detail page url](#6---slugify-course-title-to-create-course-detail-page-url)
 7. [Create course detail page](#7---create-course-detail-page)
 8. [Key Points and Curriculum components functionality](#8---key-points-and-curriculum-components-functionality)
+9. [Connect button improvements](#9---connect-button-improvements)

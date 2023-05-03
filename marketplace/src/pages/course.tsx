@@ -11,8 +11,8 @@ export default function Course() {
       <div className="py-4">
         <CourseHero/>
       </div>
-      <Keypoints/>
-      <Curriculum/>
+      <Keypoints points={[]}/>
+      <Curriculum locked={false}/>
       <Modal/>
     </>
   )

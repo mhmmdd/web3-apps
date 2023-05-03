@@ -11,7 +11,10 @@ export default function Navbar() {
             </div>
             <div>
               <a href="#" className="font-medium mr-8 text-gray-500 hover:text-gray-900">Company</a>
-              <a href="#" className="font-medium mr-8 text-indigo-600 hover:text-indigo-500">Log in</a>
+              <a href="#"
+                 className="px-8 py-3 border rounded-md text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                Connect
+              </a>
             </div>
           </div>
         </nav>
