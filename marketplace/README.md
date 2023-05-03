@@ -77,3 +77,30 @@ export default function Home() {
 
 Home.Layout = BaseLayout;
 ```
+
+## 4 - Fetch courses data from json file
+src/pages/index.tsx
+```tsx
+export default function Home({courses}: {courses: Course[]}) {
+  return (
+    <>
+      <CourseList courses={courses}/>
+    </>
+  )
+}
+
+export const getStaticProps = async () => {
+  const {data} = getAllCourses();
+  return {
+    props: {
+      courses: data
+    }
+  }
+}
+```
+
+# Change History 
+1. [Path Alias](#1---path-alias)
+2. [Create new components and pages](#2---create-new-components-and-pages)
+3. [Create Base Layout](#3---create-base-layout)
+4. [Fetch courses data from json file](#4---fetch-courses-data-from-json-file)

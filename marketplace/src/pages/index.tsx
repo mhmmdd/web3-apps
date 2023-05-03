@@ -6,8 +6,9 @@ import WalletBar from "@/components/web3/walletBar";
 import OrderCard from "@/components/order/orderCard";
 import CourseList from "@/components/course/courseList";
 import BaseLayout from "@/components/layout/baseLayout";
+import {Course, getAllCourses} from "@/content/courses/fetcher";
 
-export default function Home() {
+export default function Home({courses}: {courses: Course[]}) {
   return (
     <>
       <Hero/>
@@ -15,9 +16,19 @@ export default function Home() {
       <WalletBar/>
       <EthRates/>
       <OrderCard/>
-      <CourseList/>
+      <CourseList courses={courses}/>
     </>
   )
 }
+
+export const getStaticProps = async () => {
+  const {data} = getAllCourses();
+  return {
+    props: {
+      courses: data
+    }
+  }
+}
+
 
 Home.Layout = BaseLayout;
