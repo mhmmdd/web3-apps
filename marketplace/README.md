@@ -99,8 +99,34 @@ export const getStaticProps = async () => {
 }
 ```
 
+## 5 - Next.js Image Optimization
+src/components/course/courseCard.tsx
+```tsx
+import Image from "next/image";
+
+export default function CourseList({courses}: { courses: Course[] }) {
+  return (
+    <Image className="object-cover"
+           width={200}
+           height={230}
+           src={course.coverImage}
+           alt={course.title}/>
+  )
+}
+```
+next.config.js
+```js
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    domains: ['localhost', 'thrangra.sirv.com'],
+  }
+}
+```
+
 # Change History 
 1. [Path Alias](#1---path-alias)
 2. [Create new components and pages](#2---create-new-components-and-pages)
 3. [Create Base Layout](#3---create-base-layout)
 4. [Fetch courses data from json file](#4---fetch-courses-data-from-json-file)
+5. [Next.js Image Optimization](#5---nextjs-image-optimization)
