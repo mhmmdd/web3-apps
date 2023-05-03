@@ -159,6 +159,7 @@ If you go to `http://localhost:3000/courses/learn-react`, you will see the cours
 
 ## 7 - Create course detail page
 
+## 8 - Key Points and Curriculum components functionality
 
 
 # Change History 
@@ -168,3 +169,5 @@ If you go to `http://localhost:3000/courses/learn-react`, you will see the cours
 4. [Fetch courses data from json file](#4---fetch-courses-data-from-json-file)
 5. [Next.js Image Optimization](#5---nextjs-image-optimization)
 6. [Slugify course title to create course detail page url](#6---slugify-course-title-to-create-course-detail-page-url)
+7. [Create course detail page](#7---create-course-detail-page)
+8. [Key Points and Curriculum components functionality](#8---key-points-and-curriculum-components-functionality)

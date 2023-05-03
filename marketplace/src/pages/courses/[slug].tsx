@@ -16,8 +16,12 @@ export default function Course({course}: React.PropsWithChildren<any>) {
           image={course.coverImage}
         />
       </div>
-      <Keypoints/>
-      <Curriculum/>
+      <Keypoints
+        points={course.wsl}
+      />
+      <Curriculum
+        locked={true}
+      />
       <Modal/>
     </>
   )

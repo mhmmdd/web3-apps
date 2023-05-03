@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Curriculum() {
+export default function Curriculum({locked}: { locked: boolean }) {
   const lectures = [
     "How to init App",
     "How to get a help",
@@ -9,6 +9,8 @@ export default function Curriculum() {
     "How to write For Loops",
     "Safe operator",
   ]
+
+  const statusClass = "px-2 inline-flex text-xs leading-5 font-semibold rounded-full";
 
   return (
     <section className="max-w-5xl mx-auto">
@@ -46,12 +48,18 @@ export default function Curriculum() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                           <span
-                            className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                            Unlocked
+                            className={
+                              locked ?
+                                `bg-red-100 text-red-800 ${statusClass}` :
+                                `bg-green-100 text-green-800 ${statusClass}`
+                            }>
+                            {locked ? "Locked" : "Unlocked"}
                           </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <a href="#" className="text-indigo-600 hover:text-indigo-900">Play</a>
+                      <a href="#" className="text-indigo-600 hover:text-indigo-900">
+                        {locked ? "Get Access" : "Play"}
+                      </a>
                     </td>
                   </tr>
                 )}
