@@ -157,6 +157,9 @@ export default function Course() {
 ```
 If you go to `http://localhost:3000/courses/learn-react`, you will see the course detail page.
 
+## 7 - Create course detail page
+
+
 
 # Change History 
 1. [Path Alias](#1---path-alias)
