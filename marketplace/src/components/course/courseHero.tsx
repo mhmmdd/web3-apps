@@ -50,6 +50,8 @@ export default function CourseHero({title, description, image}: React.PropsWithC
           <Image className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
                  src={image}
                  alt={title}
+                 width={500}
+                 height={500}
           />
         </div>
       </div>
