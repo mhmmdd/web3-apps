@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from "@/components/common/navbar";
-import Footer from "@/components/common/footer";
+import Navbar from "@/components/ui/common/navbar";
+import Footer from "@/components/ui/common/footer";
 
 const BaseLayout = ({children}) => {
   return (

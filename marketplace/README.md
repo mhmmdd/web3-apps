@@ -163,6 +163,23 @@ If you go to `http://localhost:3000/courses/learn-react`, you will see the cours
 
 ## 9 - Connect button improvements
 
+## 10 - Create Web3 Context and Web3 Provider
+src/components/providers/web3.tsx
+```tsx
+import {createContext, useContext} from "react";
+
+const Web3Context = createContext<any>(null);
+export const Web3Provider: React.FC = ({children}) => {
+  return (
+    <Web3Context.Provider value={{test: "Hello"}}>
+      {children}
+    </Web3Context.Provider>
+  )
+}
+export const useWeb3 = () => {
+  return useContext(Web3Context);
+}
+```
 
 # Change History 
 1. [Path Alias](#1---path-alias)
