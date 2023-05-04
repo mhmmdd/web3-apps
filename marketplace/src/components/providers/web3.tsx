@@ -1,8 +1,8 @@
-import {createContext, useContext} from "react";
+import React, {createContext, useContext} from "react";
 
 const Web3Context = createContext<any>(null);
 
-export const Web3Provider: React.FC = ({children}) => {
+export const Web3Provider = ({children} : {children: React.ReactNode}) => {
   return (
     <Web3Context.Provider value={{test: "Hello"}}>
       {children}

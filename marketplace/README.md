@@ -181,6 +181,22 @@ export const useWeb3 = () => {
 }
 ```
 
+## 11 - useContext to get data from Web3 Context (parent component)
+src/pages/index.tsx
+```tsx
+import {useWeb3} from "@/components/providers/web3";
+
+export default function Home({courses}: {courses: Course[]}) {
+  // useWeb3 is a custom hook that returns the value of the Web3Context
+  const {test} = useWeb3();
+  return (
+    <>
+      {test}
+    </>
+  )
+}
+```
+
 # Change History 
 1. [Path Alias](#1---path-alias)
 2. [Create new components and pages](#2---create-new-components-and-pages)
@@ -191,3 +207,5 @@ export const useWeb3 = () => {
 7. [Create course detail page](#7---create-course-detail-page)
 8. [Key Points and Curriculum components functionality](#8---key-points-and-curriculum-components-functionality)
 9. [Connect button improvements](#9---connect-button-improvements)
+10. [Create Web3 Context and Web3 Provider](#10---create-web3-context-and-web3-provider)
+11. [useContext to get data from Web3 Context (parent component)](#11---usecontext-to-get-data-from-web3-context-parent-component)
