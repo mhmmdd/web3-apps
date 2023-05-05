@@ -7,14 +7,11 @@ import OrderCard from "@/components/ui/order/orderCard";
 import CourseList from "@/components/ui/course/courseList";
 import BaseLayout from "@/components/ui/layout/baseLayout";
 import {Course, getAllCourses} from "@/content/courses/fetcher";
-import {useWeb3} from "@/components/providers/web3";
 
 export default function Home({courses}: {courses: Course[]}) {
   // useWeb3 is a custom hook that returns the value of the Web3Context
-  const {web3, isInitialized} = useWeb3();
   return (
     <>
-      {isInitialized ? <p>Web3 is initialized</p> : <p>Web3 is not initialized</p>}
       <Hero/>
       <Breadcrumbs/>
       <WalletBar/>

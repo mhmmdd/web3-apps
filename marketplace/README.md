@@ -249,7 +249,7 @@ export const useWeb3 = () => {
   return useContext(Web3Context);
 }
 ```
-marketplace/src/pages/index.tsx
+src/pages/index.tsx
 ```tsx
 export default function Home() {
   const {web3, isInitialized} = useWeb3();
@@ -257,6 +257,31 @@ export default function Home() {
     <>
       {isInitialized ? <p>Web3 is initialized</p> : <p>Web3 is not initialized</p>}
     </>
+  )
+}
+```
+
+## 13 - useMemo for web3Api object to prevent re-rendering and add connect function
+
+src/components/providers/web3.tsx
+```tsx
+// useMemo for web3Api
+  const web3ApiMemo = React.useMemo(() => {
+    return {
+      ...web3Api,
+      connect: () => console.log("try to connect"),
+    }
+  }, [web3Api]);
+```
+
+marketplace/src/components/ui/common/navbar.tsx
+```tsx
+export default function Navbar() {
+  const {connect} = useWeb3();
+  return (
+    <a href="#" onClick={connect}>
+      Connect
+    </a>
   )
 }
 ```
@@ -274,3 +299,4 @@ export default function Home() {
 10. [Create Web3 Context and Web3 Provider](#10---create-web3-context-and-web3-provider)
 11. [useContext to get data from Web3 Context (parent component)](#11---usecontext-to-get-data-from-web3-context-parent-component)
 12. [Use provider library to connect to Metamask](#12---use-provider-library-to-connect-to-metamask)
+13. [useMemo for web3Api object to prevent re-rendering and add connect function](#13---usememo-for-web3api-object-to-prevent-re-rendering-and-add-connect-function)

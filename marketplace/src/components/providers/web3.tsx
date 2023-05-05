@@ -9,7 +9,7 @@ export const Web3Provider = ({children}: { children: React.ReactNode }) => {
     provider: null,
     web3: null,
     contract: null,
-    isInitialized: false,
+    isLoading: true,
   });
 
   // ethereum is injected to the browser by MetaMask
@@ -22,18 +22,26 @@ export const Web3Provider = ({children}: { children: React.ReactNode }) => {
           provider,
           web3,
           contract: null,
-          isInitialized: true,
+          isLoading: false,
         });
       } else {
-        setWeb3Api((api) => ({...api, isInitialized: true}));
+        setWeb3Api((api) => ({...api, isLoading: false}));
         console.error("Please install MetaMask!");
       }
     }
     loadProvider();
   }, []);
 
+  // useMemo for web3Api
+  const web3ApiMemo = React.useMemo(() => {
+    return {
+      ...web3Api,
+      connect: () => console.log("try to connect"),
+    }
+  }, [web3Api]);
+
   return (
-    <Web3Context.Provider value={web3Api}>
+    <Web3Context.Provider value={web3ApiMemo}>
       {children}
     </Web3Context.Provider>
   )
