@@ -11,10 +11,10 @@ import {useWeb3} from "@/components/providers/web3";
 
 export default function Home({courses}: {courses: Course[]}) {
   // useWeb3 is a custom hook that returns the value of the Web3Context
-  const {test} = useWeb3();
+  const {web3, isInitialized} = useWeb3();
   return (
     <>
-      {test}
+      {isInitialized ? <p>Web3 is initialized</p> : <p>Web3 is not initialized</p>}
       <Hero/>
       <Breadcrumbs/>
       <WalletBar/>

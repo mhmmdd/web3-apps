@@ -197,6 +197,70 @@ export default function Home({courses}: {courses: Course[]}) {
 }
 ```
 
+## 12 - Use provider library to connect to Metamask
+```shell
+$ pnpm install @metamask/detect-provider
+$ pnpm install web3
+```
+src/components/providers/web3.tsx
+```typescript
+import React, {createContext, useContext, useEffect} from "react";
+import detectEthereumProvider from "@metamask/detect-provider";
+import Web3 from "web3";
+
+const Web3Context = createContext<any>(null);
+
+export const Web3Provider = ({children}: { children: React.ReactNode }) => {
+  const [web3Api, setWeb3Api] = React.useState<any>({
+    provider: null,
+    web3: null,
+    contract: null,
+    isInitialized: false,
+  });
+
+  // ethereum is injected to the browser by MetaMask
+  useEffect(() => {
+    const loadProvider = async () => {
+      const provider = await detectEthereumProvider();
+      if (provider) {
+        const web3 = new Web3(provider as any);
+        setWeb3Api({
+          provider,
+          web3,
+          contract: null,
+          isInitialized: true,
+        });
+      } else {
+        setWeb3Api((api) => ({...api, isInitialized: true}));
+        console.error("Please install MetaMask!");
+      }
+    }
+    loadProvider();
+  }, []);
+
+  return (
+    <Web3Context.Provider value={web3Api}>
+      {children}
+      </Web3Context.Provider>
+  )
+}
+
+export const useWeb3 = () => {
+  return useContext(Web3Context);
+}
+```
+marketplace/src/pages/index.tsx
+```tsx
+export default function Home() {
+  const {web3, isInitialized} = useWeb3();
+  return (
+    <>
+      {isInitialized ? <p>Web3 is initialized</p> : <p>Web3 is not initialized</p>}
+    </>
+  )
+}
+```
+
 # Change History 
 1. [Path Alias](#1---path-alias)
 2. [Create new components and pages](#2---create-new-components-and-pages)
@@ -209,3 +273,4 @@ export default function Home({courses}: {courses: Course[]}) {
 9. [Connect button improvements](#9---connect-button-improvements)
 10. [Create Web3 Context and Web3 Provider](#10---create-web3-context-and-web3-provider)
 11. [useContext to get data from Web3 Context (parent component)](#11---usecontext-to-get-data-from-web3-context-parent-component)
+12. [Use provider library to connect to Metamask](#12---use-provider-library-to-connect-to-metamask)
