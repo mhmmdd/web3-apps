@@ -9,7 +9,7 @@ export default function Navbar() {
     <section>
       <div className="relative pt-6 px-4 sm:px-6 lg:px-8">
         <nav className="relative" aria-label="Global">
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             <div>
               <Link href="/">
                 <span className="font-medium mr-8 text-gray-500 hover:text-gray-900">Product</span>
@@ -28,7 +28,7 @@ export default function Navbar() {
               {
                 isLoading
                   ?
-                  <Button onClick={connect}>
+                  <Button onClick={connect} disabled>
                     Loading...
                   </Button> :
                   (
@@ -37,7 +37,7 @@ export default function Navbar() {
                         Connect
                       </Button>
                       :
-                      <Button onClick={connect}>
+                      <Button onClick={() => window.open("https://metamask.io/download.html", "_blank")}>
                         Install Metamask
                       </Button>
                   )

@@ -6,10 +6,10 @@ export default function Button({
                                  ...rest
                                }) {
   return (
-    <span
+    <button
       {...rest}
-      className={`px-8 py-3 border rounded-md text-base font-medium ${className}`}>
+      className={`disabled:opacity-50 px-8 py-3 border rounded-md text-base font-medium ${className}`}>
       {children}
-    </span>
+    </button>
   )
 }
