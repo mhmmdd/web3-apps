@@ -317,6 +317,8 @@ const web3ApiMemo = React.useMemo(() => {
   }, [web3Api]);
 ```
 
+## 16 - useAccount hook abstraction
+
 # Change History 
 1. [Path Alias](#1---path-alias)
 2. [Create new components and pages](#2---create-new-components-and-pages)

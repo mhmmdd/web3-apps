@@ -39,7 +39,7 @@ export const Web3Provider = ({children}: { children: React.ReactNode }) => {
     return {
       ...web3Api,
       isWeb3Enabled: web3 !== null,
-      hooks: setupHooks(web3),
+      getHooks: () => setupHooks(web3),
       connect: provider ?
         async () => {
           try {
@@ -62,4 +62,10 @@ export const Web3Provider = ({children}: { children: React.ReactNode }) => {
 
 export const useWeb3 = () => {
   return useContext(Web3Context);
+}
+
+// This is a helper function to use hooks from the web3Api
+export const useHooks = (cb: (hooks: any) => any) => {
+  const {getHooks} = useWeb3();
+  return cb(getHooks());
 }
