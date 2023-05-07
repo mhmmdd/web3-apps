@@ -335,3 +335,4 @@ const web3ApiMemo = React.useMemo(() => {
 13. [useMemo for web3Api object to prevent re-rendering and add connect function](#13---usememo-for-web3api-object-to-prevent-re-rendering-and-add-connect-function)
 14. [Web3 Provider and create Button component and use it in Navbar](#14---web3-provider-and-create-button-component-and-use-it-in-navbar)
 15. [useAccount hook to get account address](#15---useaccount-hook-to-get-account-address)
+16. [useAccount hook abstraction](#16---useaccount-hook-abstraction)
