@@ -288,7 +288,34 @@ export default function Navbar() {
 
 ## 14 - Web3 Provider and create Button component and use it in Navbar
 
-
+## 15 - useAccount hook to get account address
+src/components/providers/web3/hooks/setupHooks.tsx
+```tsx
+export const setupHooks = (web3: any) => {
+  return {
+    useAccount: useAccount(web3),
+  }
+}
+```
+src/components/providers/web3/hooks/useAccount.tsx
+```tsx
+export const useAccount = (web3: any) => () => {
+  return {
+    account: web3 ? web3.eth.accounts[0] : null,
+  }
+}
+```
+src/components/providers/web3.tsx
+```tsx
+const web3ApiMemo = React.useMemo(() => {
+    const {web3, provider} = web3Api;
+    return {
+      ...web3Api,
+      isWeb3Enabled: web3 !== null,
+      hooks: setupHooks(web3),
+    }
+  }, [web3Api]);
+```
 
 # Change History 
 1. [Path Alias](#1---path-alias)
@@ -305,3 +332,4 @@ export default function Navbar() {
 12. [Use provider library to connect to Metamask](#12---use-provider-library-to-connect-to-metamask)
 13. [useMemo for web3Api object to prevent re-rendering and add connect function](#13---usememo-for-web3api-object-to-prevent-re-rendering-and-add-connect-function)
 14. [Web3 Provider and create Button component and use it in Navbar](#14---web3-provider-and-create-button-component-and-use-it-in-navbar)
+15. [useAccount hook to get account address](#15---useaccount-hook-to-get-account-address)
