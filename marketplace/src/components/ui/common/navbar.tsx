@@ -9,7 +9,6 @@ export default function Navbar() {
 
   return (
     <section>
-      {account}
       <div className="relative pt-6 px-4 sm:px-6 lg:px-8">
         <nav className="relative" aria-label="Global">
           <div className="flex justify-between items-center">
@@ -36,9 +35,14 @@ export default function Navbar() {
                   </Button> :
                   (
                     isWeb3Enabled ?
-                      <Button onClick={connect}>
-                        Connect
-                      </Button>
+                      (
+                        account ?
+                          <Button hoverable={false} className="cursor-default"> Hi, {account}</Button>
+                          :
+                          <Button onClick={connect}>
+                            Connect
+                          </Button>
+                      )
                       :
                       <Button onClick={() => window.open("https://metamask.io/download.html", "_blank")}>
                         Install Metamask

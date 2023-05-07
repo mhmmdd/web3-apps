@@ -319,6 +319,20 @@ const web3ApiMemo = React.useMemo(() => {
 
 ## 16 - useAccount hook abstraction
 
+## 17 - Account listener and update account state
+src/components/providers/web3/hooks/handler.tsx
+```tsx
+useEffect(() => {
+  // Subscribe to accounts change
+  const subscribe = async () => {
+    provider.on("accountsChanged", (accounts: string[]) => {
+      setAccount(accounts[0]);
+    });
+  }
+  provider && subscribe();
+}, [provider]);
+```
+
 # Change History 
 1. [Path Alias](#1---path-alias)
 2. [Create new components and pages](#2---create-new-components-and-pages)
@@ -336,3 +350,4 @@ const web3ApiMemo = React.useMemo(() => {
 14. [Web3 Provider and create Button component and use it in Navbar](#14---web3-provider-and-create-button-component-and-use-it-in-navbar)
 15. [useAccount hook to get account address](#15---useaccount-hook-to-get-account-address)
 16. [useAccount hook abstraction](#16---useaccount-hook-abstraction)
+17. [Account listener and update account state](#17---account-listener-and-update-account-state)

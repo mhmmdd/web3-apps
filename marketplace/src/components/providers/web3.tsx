@@ -39,7 +39,7 @@ export const Web3Provider = ({children}: { children: React.ReactNode }) => {
     return {
       ...web3Api,
       isWeb3Enabled: web3 !== null,
-      getHooks: () => setupHooks(web3),
+      getHooks: () => setupHooks(web3, provider),
       connect: provider ?
         async () => {
           try {
