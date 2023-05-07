@@ -36,7 +36,17 @@ export const Web3Provider = ({children}: { children: React.ReactNode }) => {
   const web3ApiMemo = React.useMemo(() => {
     return {
       ...web3Api,
-      connect: () => console.log("try to connect"),
+      isWeb3Enabled: web3Api.web3 !== null,
+      connect: web3Api.provider ?
+        async () => {
+          try {
+            await web3Api.provider.request({method: "eth_requestAccounts"});
+          } catch (e) {
+            console.error(e, "Please allow access for the app to work");
+            location.reload();
+          }
+        } :
+        () => console.log("Please install MetaMask!"),
     }
   }, [web3Api]);
 

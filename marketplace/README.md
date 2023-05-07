@@ -286,6 +286,10 @@ export default function Navbar() {
 }
 ```
 
+## 14 - Web3 Provider and create Button component and use it in Navbar
+
+
+
 # Change History 
 1. [Path Alias](#1---path-alias)
 2. [Create new components and pages](#2---create-new-components-and-pages)
@@ -300,3 +304,4 @@ export default function Navbar() {
 11. [useContext to get data from Web3 Context (parent component)](#11---usecontext-to-get-data-from-web3-context-parent-component)
 12. [Use provider library to connect to Metamask](#12---use-provider-library-to-connect-to-metamask)
 13. [useMemo for web3Api object to prevent re-rendering and add connect function](#13---usememo-for-web3api-object-to-prevent-re-rendering-and-add-connect-function)
+14. [Web3 Provider and create Button component and use it in Navbar](#14---web3-provider-and-create-button-component-and-use-it-in-navbar)

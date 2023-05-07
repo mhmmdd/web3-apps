@@ -1,7 +1,9 @@
 import {useWeb3} from "@/components/providers/web3";
+import Link from "next/link";
+import Button from "@/components/ui/common/button";
 
 export default function Navbar() {
-  const {connect} = useWeb3();
+  const {connect, isLoading, isWeb3Enabled} = useWeb3();
 
   return (
     <section>
@@ -9,17 +11,37 @@ export default function Navbar() {
         <nav className="relative" aria-label="Global">
           <div className="flex justify-between">
             <div>
-              <a href="#" className="font-medium mr-8 text-gray-500 hover:text-gray-900">Product</a>
-              <a href="#" className="font-medium mr-8 text-gray-500 hover:text-gray-900">Features</a>
-              <a href="#" className="font-medium mr-8 text-gray-500 hover:text-gray-900">Marketplace</a>
+              <Link href="/">
+                <span className="font-medium mr-8 text-gray-500 hover:text-gray-900">Product</span>
+              </Link>
+              <Link href="/">
+                <span className="font-medium mr-8 text-gray-500 hover:text-gray-900">Features</span>
+              </Link>
+              <Link href="/">
+                <span className="font-medium mr-8 text-gray-500 hover:text-gray-900">Marketplace</span>
+              </Link>
             </div>
             <div>
-              <a href="#" className="font-medium mr-8 text-gray-500 hover:text-gray-900">Company</a>
-              <a href="#"
-                 onClick={connect}
-                 className="px-8 py-3 border rounded-md text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
-                Connect
-              </a>
+              <Link href="/">
+                <span className="font-medium mr-8 text-gray-500 hover:text-gray-900">Company</span>
+              </Link>
+              {
+                isLoading
+                  ?
+                  <Button onClick={connect}>
+                    Loading...
+                  </Button> :
+                  (
+                    isWeb3Enabled ?
+                      <Button onClick={connect}>
+                        Connect
+                      </Button>
+                      :
+                      <Button onClick={connect}>
+                        Install Metamask
+                      </Button>
+                  )
+              }
             </div>
           </div>
         </nav>
