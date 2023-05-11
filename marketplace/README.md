@@ -340,14 +340,14 @@ $ pnpm install swr
 src/components/providers/web3/hooks/handler.tsx
 ```tsx
 // swr hook to get account
-  const {mutate, ...rest} = useSWR(
-    web3 && "web3/accounts",
-    async () => {
-      const accounts = await web3.eth.getAccounts();
-      return accounts[0];
-    }
-  );
-  ```
+const {mutate, ...rest} = useSWR(
+  web3 && "web3/accounts",
+  async () => {
+    const accounts = await web3.eth.getAccounts();
+    return accounts[0];
+  }
+);
+```
 
 # Change History 
 1. [Path Alias](#1---path-alias)
