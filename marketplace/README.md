@@ -333,6 +333,22 @@ useEffect(() => {
 }, [provider]);
 ```
 
+## 18 - swr js library to fetch data
+```shell
+$ pnpm install swr
+```
+src/components/providers/web3/hooks/handler.tsx
+```tsx
+// swr hook to get account
+  const {mutate, ...rest} = useSWR(
+    web3 && "web3/accounts",
+    async () => {
+      const accounts = await web3.eth.getAccounts();
+      return accounts[0];
+    }
+  );
+  ```
+
 # Change History 
 1. [Path Alias](#1---path-alias)
 2. [Create new components and pages](#2---create-new-components-and-pages)
@@ -351,3 +367,4 @@ useEffect(() => {
 15. [useAccount hook to get account address](#15---useaccount-hook-to-get-account-address)
 16. [useAccount hook abstraction](#16---useaccount-hook-abstraction)
 17. [Account listener and update account state](#17---account-listener-and-update-account-state)
+18. [swr js library to fetch data](#18---swr-js-library-to-fetch-data)

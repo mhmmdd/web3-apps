@@ -36,8 +36,8 @@ export default function Navbar() {
                   (
                     isWeb3Enabled ?
                       (
-                        account ?
-                          <Button hoverable={false} className="cursor-default"> Hi, {account}</Button>
+                        account.data ?
+                          <Button hoverable={false} className="cursor-default"> Hi, there</Button>
                           :
                           <Button onClick={connect}>
                             Connect
@@ -53,6 +53,15 @@ export default function Navbar() {
           </div>
         </nav>
       </div>
+
+      {
+        account.data &&
+        <div className="flex justify-end pt-4 sm:px-6 lg:px-8">
+          <div className="text-white bg-indigo-600 px-4 py-2 rounded-md">
+            {account.data}
+          </div>
+        </div>
+      }
     </section>
   )
 }
