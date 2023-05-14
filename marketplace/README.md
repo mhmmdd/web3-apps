@@ -349,6 +349,20 @@ const {mutate, ...rest} = useSWR(
 );
 ```
 
+## 19 - isAdmin property to check if account is admin
+src/components/providers/web3/hooks/handler.tsx
+```tsx
+// swr hook to get account
+const {data, mutate, ...rest} = useSWR();
+
+// isAdmin property to check if account is admin
+return {
+  account: {
+    isAdmin: (data && adminAddresses[web3.utils.keccak256(data)]) || false,
+  }
+};
+```
+
 # Change History 
 1. [Path Alias](#1---path-alias)
 2. [Create new components and pages](#2---create-new-components-and-pages)
@@ -368,3 +382,4 @@ const {mutate, ...rest} = useSWR(
 16. [useAccount hook abstraction](#16---useaccount-hook-abstraction)
 17. [Account listener and update account state](#17---account-listener-and-update-account-state)
 18. [swr js library to fetch data](#18---swr-js-library-to-fetch-data)
+19. [isAdmin property to check if account is admin](#19---isadmin-property-to-check-if-account-is-admin)
