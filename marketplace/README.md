@@ -363,6 +363,8 @@ return {
 };
 ```
 
+## 20 - Create Marketplace page and hide admin panel for non-admin users
+
 # Change History 
 1. [Path Alias](#1---path-alias)
 2. [Create new components and pages](#2---create-new-components-and-pages)
@@ -383,3 +385,4 @@ return {
 17. [Account listener and update account state](#17---account-listener-and-update-account-state)
 18. [swr js library to fetch data](#18---swr-js-library-to-fetch-data)
 19. [isAdmin property to check if account is admin](#19---isadmin-property-to-check-if-account-is-admin)
+20. [Create Marketplace page and hide admin panel for non-admin users](#20---create-marketplace-page-and-hide-admin-panel-for-non-admin-users)
