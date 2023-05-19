@@ -1,6 +1,9 @@
 import React from "react";
+import {useWeb3} from "@/components/providers/web3";
 
 export default function WalletBar({address, network}) {
+  const {requireMetaMask} = useWeb3();
+
   return (
     <section className="text-white bg-indigo-600">
       <div className="p-8">
@@ -20,11 +23,17 @@ export default function WalletBar({address, network}) {
               // Wrong network warning
               !network.isLoading &&
               !network.isSupportedNetwork &&
-              <div className="bg-red-400 text-white p-2 rounded-md">
+              <div className="bg-red-400 p-4 rounded-lg">
                 <div>Wrong network</div>
                 <div>Please switch to: {` `}
                   <strong className="text-2xl">{network.targetNetwork}</strong>
                 </div>
+              </div>
+            }
+            {
+              requireMetaMask &&
+              <div className="bg-yellow-500 p-4 rounded-lg">
+                <div>MetaMask not found. Please install MetaMask</div>
               </div>
             }
             {

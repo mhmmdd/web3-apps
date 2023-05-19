@@ -37,10 +37,10 @@ export const Web3Provider = ({children}: { children: React.ReactNode }) => {
 
   // useMemo for web3Api
   const web3ApiMemo = React.useMemo(() => {
-    const {web3, provider} = web3Api;
+    const {web3, provider, isLoading} = web3Api;
     return {
       ...web3Api,
-      isWeb3Enabled: web3 !== null,
+      requireMetaMask: !isLoading && !web3,
       connect: provider ?
         async () => {
           try {

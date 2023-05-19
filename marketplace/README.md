@@ -404,6 +404,7 @@ export default function CourseList({courses, children}) {
 
 ## 24 - Hook refactor and setupHooks improvements
 
+## 25 - Warning "Require install MetaMask" is added
 
 # Change History 
 1. [Path Alias](#1---path-alias)
@@ -430,3 +431,4 @@ export default function CourseList({courses, children}) {
 22. [Pass the Course Card to the Course List as a child component](#22---pass-the-course-card-to-the-course-list-as-a-child-component)
 23. [Network Environment Variables and wrong network warning](#23---network-environment-variables-and-wrong-network-warning)
 24. [Hook refactor and setupHooks improvements](#24---hook-refactor-and-setuphooks-improvements)
+25. [Warning "Require install MetaMask" is added](#25---warning-require-install-metamask-is-added)
