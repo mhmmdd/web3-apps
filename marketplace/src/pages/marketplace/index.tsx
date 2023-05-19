@@ -19,7 +19,8 @@ export default function Marketplace({courses}: { courses: Course[] }) {
           network={ {
             data: network.data,
             targetNetwork: network.targetNetwork,
-            isSupportedNetwork: network.isSupportedNetwork
+            isSupportedNetwork: network.isSupportedNetwork,
+            isLoading: network.isLoading,
           }}
         />
         Current network: {`${network.data}`} <br/>

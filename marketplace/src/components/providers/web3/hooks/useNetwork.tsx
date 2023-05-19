@@ -17,7 +17,7 @@ const targetNetwork = NETWORKS[process.env.NEXT_PUBLIC_TARGET_CHAIN_ID];
 export const handler = (web3: Web3, provider: any) => () => {
 
   // get id of the network with swr
-  const {data, mutate, ...rest} =
+  const {data, error, mutate, ...rest} =
     useSWR(web3 ? "web3/network" : null,
       async () => {
         const chainId = await web3.eth.getChainId();

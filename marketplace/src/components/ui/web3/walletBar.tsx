@@ -17,7 +17,8 @@ export default function WalletBar({address, network}) {
           </div>
           <div>
             {
-              // Network error message
+              // Wrong network warning
+              !network.isLoading &&
               !network.isSupportedNetwork &&
               <div className="bg-red-400 text-white p-2 rounded-md">
                 <div>Wrong network</div>
@@ -26,10 +27,13 @@ export default function WalletBar({address, network}) {
                 </div>
               </div>
             }
-            <div>
-              <span>Currently on </span>
-              <strong className="text-2xl">{network.data}</strong>
-            </div>
+            {
+              network.data &&
+              <div>
+                <span>Currently on </span>
+                <strong className="text-2xl">{network.data}</strong>
+              </div>
+            }
           </div>
         </div>
       </div>
