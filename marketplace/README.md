@@ -381,6 +381,25 @@ useEffect(() => {
 }, [web3]);
 ```
 
+## 22 - Pass the Course Card to the Course List as a child component
+```tsx
+// CourseList Component Usage
+<CourseList courses={courses}>
+  {(course) => (
+    <CourseCard course={course} key={course.id}/>
+  )}
+</CourseList>
+
+// CourseList Component Implementation
+export default function CourseList({courses, children}) {
+  return (
+    <section className="grid md:grid-cols-1 lg:grid-cols-2 gap-4 mb-5">
+      {courses.map(course => children(course))}
+    </section>
+  )
+}
+```
+
 # Change History 
 1. [Path Alias](#1---path-alias)
 2. [Create new components and pages](#2---create-new-components-and-pages)
@@ -403,3 +422,4 @@ useEffect(() => {
 19. [isAdmin property to check if account is admin](#19---isadmin-property-to-check-if-account-is-admin)
 20. [Create Marketplace page and hide admin panel for non-admin users](#20---create-marketplace-page-and-hide-admin-panel-for-non-admin-users)
 21. [Network Hook to get network name](#21---network-hook-to-get-network-name)
+22. [Pass the Course Card to the Course List as a child component](#22---pass-the-course-card-to-the-course-list-as-a-child-component)

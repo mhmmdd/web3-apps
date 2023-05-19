@@ -5,6 +5,7 @@ import BaseLayout from "@/components/ui/layout/baseLayout";
 import {Course, getAllCourses} from "@/content/courses/fetcher";
 import {useAccount} from "@/components/hooks/web3/useAccount";
 import {useNetwork} from "@/components/hooks/web3/useNetwork";
+import CourseCard from "@/components/ui/course/courseCard";
 
 export default function Marketplace({courses}: { courses: Course[] }) {
   const {account} = useAccount();
@@ -18,7 +19,11 @@ export default function Marketplace({courses}: { courses: Course[] }) {
           network={network.data}
         />
       </div>
-      <CourseList courses={courses}/>
+      <CourseList courses={courses}>
+        {(course) => (
+          <CourseCard course={course} key={course.id}/>
+        )}
+      </CourseList>
     </>
   )
 }
