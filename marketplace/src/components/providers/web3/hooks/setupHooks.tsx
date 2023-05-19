@@ -4,6 +4,7 @@ import {handler as createUseNetworkHook} from "@/components/providers/web3/hooks
 
 // setupHooks is a function that takes in web3 and returns an object of hooks
 export const setupHooks = (...deps) => {
+  console.log("setupHooks deps", deps)
   return {
     useAccount: createUseAccountHook(...deps),
     // same as above

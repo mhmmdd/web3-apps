@@ -11,6 +11,7 @@ export const Web3Provider = ({children}: { children: React.ReactNode }) => {
     web3: null,
     contract: null,
     isLoading: true,
+    hooks: setupHooks(),
   });
 
   // ethereum is injected to the browser by MetaMask
@@ -24,6 +25,7 @@ export const Web3Provider = ({children}: { children: React.ReactNode }) => {
           web3,
           contract: null,
           isLoading: false,
+          hooks: setupHooks(web3, provider),
         });
       } else {
         setWeb3Api((api) => ({...api, isLoading: false}));
@@ -39,7 +41,6 @@ export const Web3Provider = ({children}: { children: React.ReactNode }) => {
     return {
       ...web3Api,
       isWeb3Enabled: web3 !== null,
-      getHooks: () => setupHooks(web3, provider),
       connect: provider ?
         async () => {
           try {
@@ -66,6 +67,6 @@ export const useWeb3 = () => {
 
 // This is a helper function to use hooks from the web3Api
 export const useHooks = (cb: (hooks: any) => any) => {
-  const {getHooks} = useWeb3();
-  return cb(getHooks());
+  const {hooks} = useWeb3();
+  return cb(hooks);
 }

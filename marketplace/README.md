@@ -402,6 +402,8 @@ export default function CourseList({courses, children}) {
 
 ## 23 - Network Environment Variables and wrong network warning
 
+## 24 - Hook refactor and setupHooks improvements
+
 
 # Change History 
 1. [Path Alias](#1---path-alias)
@@ -427,3 +429,4 @@ export default function CourseList({courses, children}) {
 21. [Network Hook to get network name](#21---network-hook-to-get-network-name)
 22. [Pass the Course Card to the Course List as a child component](#22---pass-the-course-card-to-the-course-list-as-a-child-component)
 23. [Network Environment Variables and wrong network warning](#23---network-environment-variables-and-wrong-network-warning)
+24. [Hook refactor and setupHooks improvements](#24---hook-refactor-and-setuphooks-improvements)
