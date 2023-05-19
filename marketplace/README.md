@@ -365,6 +365,22 @@ return {
 
 ## 20 - Create Marketplace page and hide admin panel for non-admin users
 
+## 21 - Network Hook to get network name
+src/components/providers/web3/hooks/useNetwork.tsx
+```tsx
+// get id of the network with swr
+const {mutate, ...rest} =
+  useSWR(web3 ? "web3/network" : null,
+    async () => {
+      return web3.eth.net.getId();
+    });
+
+useEffect(() => {
+  provider
+  && provider.on("chainChanged", networkId => mutate(networkId));
+}, [web3]);
+```
+
 # Change History 
 1. [Path Alias](#1---path-alias)
 2. [Create new components and pages](#2---create-new-components-and-pages)
@@ -386,3 +402,4 @@ return {
 18. [swr js library to fetch data](#18---swr-js-library-to-fetch-data)
 19. [isAdmin property to check if account is admin](#19---isadmin-property-to-check-if-account-is-admin)
 20. [Create Marketplace page and hide admin panel for non-admin users](#20---create-marketplace-page-and-hide-admin-panel-for-non-admin-users)
+21. [Network Hook to get network name](#21---network-hook-to-get-network-name)

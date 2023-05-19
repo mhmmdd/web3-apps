@@ -4,14 +4,20 @@ import CourseList from "@/components/ui/course/courseList";
 import BaseLayout from "@/components/ui/layout/baseLayout";
 import {Course, getAllCourses} from "@/content/courses/fetcher";
 import {useAccount} from "@/components/hooks/web3/useAccount";
+import {useNetwork} from "@/components/hooks/web3/useNetwork";
 
 export default function Marketplace({courses}: { courses: Course[] }) {
   const {account} = useAccount();
+  const {network} = useNetwork();
 
   return (
     <>
       <div className="py-4">
-        <WalletBar address={account.data}/>
+        {network.data}
+        <WalletBar
+          address={account.data}
+          network={network.data}
+        />
       </div>
       <CourseList courses={courses}/>
     </>
