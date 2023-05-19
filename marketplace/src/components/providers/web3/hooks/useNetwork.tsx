@@ -12,10 +12,12 @@ const NETWORKS = {
   1337: "Ganache",
 }
 
+const targetNetwork = NETWORKS[process.env.NEXT_PUBLIC_TARGET_CHAIN_ID];
+
 export const handler = (web3: Web3, provider: any) => () => {
 
   // get id of the network with swr
-  const {mutate, ...rest} =
+  const {data, mutate, ...rest} =
     useSWR(web3 ? "web3/network" : null,
       async () => {
         const chainId = await web3.eth.getChainId();
@@ -31,7 +33,10 @@ export const handler = (web3: Web3, provider: any) => () => {
 
   return {
     network: {
+      data,
       mutate,
+      targetNetwork: targetNetwork,
+      isSupportedNetwork: data === targetNetwork,
       ...rest
     }
   };

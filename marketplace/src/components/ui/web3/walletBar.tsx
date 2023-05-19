@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function WalletBar({address, network}: { address: string, network: string }) {
+export default function WalletBar({address, network}) {
   return (
     <section className="text-white bg-indigo-600">
       <div className="p-8">
@@ -16,7 +16,20 @@ export default function WalletBar({address, network}: { address: string, network
             </div>
           </div>
           <div>
-            <div><span>Currently on </span><strong className="text-2xl">{network}</strong></div>
+            {
+              // Network error message
+              !network.isSupportedNetwork &&
+              <div className="bg-red-400 text-white p-2 rounded-md">
+                <div>Wrong network</div>
+                <div>Please switch to: {` `}
+                  <strong className="text-2xl">{network.targetNetwork}</strong>
+                </div>
+              </div>
+            }
+            <div>
+              <span>Currently on </span>
+              <strong className="text-2xl">{network.data}</strong>
+            </div>
           </div>
         </div>
       </div>
