@@ -13,7 +13,6 @@ export default function Marketplace({courses}: { courses: Course[] }) {
   return (
     <>
       <div className="py-4">
-        {network.data}
         <WalletBar
           address={account.data}
           network={network.data}

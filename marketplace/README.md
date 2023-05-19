@@ -372,12 +372,12 @@ src/components/providers/web3/hooks/useNetwork.tsx
 const {mutate, ...rest} =
   useSWR(web3 ? "web3/network" : null,
     async () => {
-      return web3.eth.net.getId();
+      return await web3.eth.getChainId();
     });
 
 useEffect(() => {
   provider
-  && provider.on("chainChanged", networkId => mutate(networkId));
+  && provider.on("chainChanged", chainId => mutate(chainId));
 }, [web3]);
 ```
 
