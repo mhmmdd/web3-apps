@@ -3,7 +3,7 @@ import {Course} from "@/content/courses/fetcher";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function CourseCard({course}: { course: Course }) {
+export default function CourseCard({course, Footer}: { course: Course, Footer?: React.FC }) {
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
       <div className="flex h-full">
@@ -26,6 +26,9 @@ export default function CourseCard({course}: { course: Course }) {
           <p className="mt-2 text-gray-500">
             {course.description}
           </p>
+          {
+            Footer && <Footer/>
+          }
         </div>
       </div>
     </div>

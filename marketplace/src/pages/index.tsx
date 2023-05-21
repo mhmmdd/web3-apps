@@ -7,6 +7,7 @@ import OrderCard from "@/components/ui/order/orderCard";
 import CourseList from "@/components/ui/course/courseList";
 import BaseLayout from "@/components/ui/layout/baseLayout";
 import {Course, getAllCourses} from "@/content/courses/fetcher";
+import CourseCard from "@/components/ui/course/courseCard";
 
 export default function Home({courses}: {courses: Course[]}) {
   // useWeb3 is a custom hook that returns the value of the Web3Context
@@ -14,10 +15,16 @@ export default function Home({courses}: {courses: Course[]}) {
     <>
       <Hero/>
       <Breadcrumbs/>
-      <WalletBar/>
       <EthRates/>
       <OrderCard/>
-      <CourseList courses={courses}/>
+      <CourseList courses={courses}>
+        {course =>
+          <CourseCard
+            key={course.id}
+            course={course}
+          />
+        }
+      </CourseList>
     </>
   )
 }

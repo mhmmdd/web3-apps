@@ -11,6 +11,7 @@ export default function Button({
     primary: `text-white bg-indigo-600 ${hoverable ? "hover:bg-indigo-700" : ""}`,
     purple: `text-white bg-purple-600 ${hoverable ? "hover:bg-purple-700" : ""}`,
     red: `text-white bg-red-600 ${hoverable ? "hover:bg-red-700" : ""}`,
+    lightBlue: `text-indigo-700 bg-indigo-100 ${hoverable ? "hover:bg-indigo-200" : ""}`,
   }
 
   return (

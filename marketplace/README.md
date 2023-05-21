@@ -406,6 +406,9 @@ export default function CourseList({courses, children}) {
 
 ## 25 - Warning "Require install MetaMask" is added
 
+## 26 - Added Footer component as a props to the CourseCard component
+
+
 # Change History 
 1. [Path Alias](#1---path-alias)
 2. [Create new components and pages](#2---create-new-components-and-pages)
@@ -432,3 +435,4 @@ export default function CourseList({courses, children}) {
 23. [Network Environment Variables and wrong network warning](#23---network-environment-variables-and-wrong-network-warning)
 24. [Hook refactor and setupHooks improvements](#24---hook-refactor-and-setuphooks-improvements)
 25. [Warning "Require install MetaMask" is added](#25---warning-require-install-metamask-is-added)
+26. [Added Footer component as a props to the CourseCard component](#26---added-footer-component-as-a-props-to-the-coursecard-component)
