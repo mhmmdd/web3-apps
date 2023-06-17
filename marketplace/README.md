@@ -417,6 +417,7 @@ $ pnpm install --save-dev --save-exact prettier
 
 ## 29 - Fetch ethereum price from coingecko api
 
+## 30 - Per item price calculation
 
 # Change History 
 1. [Path Alias](#1---path-alias)
@@ -448,3 +449,4 @@ $ pnpm install --save-dev --save-exact prettier
 27. [Common Modal and Order Modal components](#27---common-modal-and-order-modal-components)
 28. [Prettier setup](#28---prettier-setup)
 29. [Fetch ethereum price from coingecko api](#29---fetch-ethereum-price-from-coingecko-api)
+30. [Per item price calculation](#30---per-item-price-calculation)

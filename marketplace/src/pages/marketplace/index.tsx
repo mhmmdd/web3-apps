@@ -17,7 +17,7 @@ export default function Marketplace({ courses }: { courses: Course[] }) {
   );
   const { account } = useAccount();
   const { network } = useNetwork();
-  const { ethPrice } = useEthPrice();
+  const { ethPrice, perItemPrice } = useEthPrice();
 
   return (
     <>
@@ -31,7 +31,7 @@ export default function Marketplace({ courses }: { courses: Course[] }) {
             isLoading: network.isLoading,
           }}
         />
-        <EthRates ethPrice={ethPrice} />
+        <EthRates ethPrice={ethPrice} ethPerItemPrice={perItemPrice} />
         Current network: {`${network.data}`} <br />
         Target network: {`${network.targetNetwork}`} <br />
         Is supported network: {`${network.isSupportedNetwork}`}
