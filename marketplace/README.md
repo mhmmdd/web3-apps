@@ -408,6 +408,13 @@ export default function CourseList({courses, children}) {
 
 ## 26 - Added Footer component as a props to the CourseCard component
 
+## 27 - Common Modal and Order Modal components
+
+## 28 - Prettier setup
+```shell
+$ pnpm install --save-dev --save-exact prettier
+```
+
 
 # Change History 
 1. [Path Alias](#1---path-alias)
@@ -436,3 +443,5 @@ export default function CourseList({courses, children}) {
 24. [Hook refactor and setupHooks improvements](#24---hook-refactor-and-setuphooks-improvements)
 25. [Warning "Require install MetaMask" is added](#25---warning-require-install-metamask-is-added)
 26. [Added Footer component as a props to the CourseCard component](#26---added-footer-component-as-a-props-to-the-coursecard-component)
+27. [Common Modal and Order Modal components](#27---common-modal-and-order-modal-components)
+28. [Prettier setup](#28---prettier-setup)
