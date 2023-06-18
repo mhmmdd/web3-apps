@@ -18,7 +18,8 @@ export const useEthPrice = () => {
 
   return {
     ethPrice: data?.ethereum.usd,
-    perItemPrice: (data && ( Number(COURSE_PRICE / data.ethereum.usd).toFixed(6)) ) || 0,
+    perItemPrice:
+      (data && Number(COURSE_PRICE / data.ethereum.usd).toFixed(6)) || 0,
     isLoading: !error && !data,
     isError: error,
   };

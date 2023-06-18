@@ -3,12 +3,12 @@ import {Course} from "@/content/courses/fetcher";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function CourseCard({course, Footer}: { course: Course, Footer?: React.FC }) {
+export default function CourseCard({course, disabled, Footer}: { course: Course, disabled: boolean, Footer?: React.FC }) {
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
       <div className="flex h-full">
         <div className="flex h-full">
-          <Image className="object-cover"
+          <Image className={`object-cover ${disabled && "filter grayscale"}`}
                  width={200}
                  height={230}
                  src={course.coverImage}

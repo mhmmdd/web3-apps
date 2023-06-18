@@ -419,6 +419,8 @@ $ pnpm install --save-dev --save-exact prettier
 
 ## 30 - Per item price calculation
 
+## 31 - Eth image, can purchase for image grayscale and purchase button
+
 # Change History 
 1. [Path Alias](#1---path-alias)
 2. [Create new components and pages](#2---create-new-components-and-pages)
@@ -450,3 +452,4 @@ $ pnpm install --save-dev --save-exact prettier
 28. [Prettier setup](#28---prettier-setup)
 29. [Fetch ethereum price from coingecko api](#29---fetch-ethereum-price-from-coingecko-api)
 30. [Per item price calculation](#30---per-item-price-calculation)
+31. [Eth image, can purchase for image grayscale and purchase button](#31---eth-image-can-purchase-for-image-grayscale-and-purchase-button)
